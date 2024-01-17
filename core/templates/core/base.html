@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <nav class="max-w-4xl mx-auto py-6 px-8 flex justify-between items-center bg-slate-800">
+            <a href="/" class="text-2xl text-white">Readr</a>
+
+            <div class="space-x-6">
+                <a href="{% url 'book:index' %}" class="text-white">Books</a>
+                <a href="{% url 'author:index' %}" class="text-white">Authors</a>
+
+                <a href="{% url 'book:add' %}" class="py-4 px-6 bg-sky-700 text-white">Add book</a>
+            </div>
+        </nav>
+
+        <div class="max-w-4xl mx-auto py-6 px-8">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

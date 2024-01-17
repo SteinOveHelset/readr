@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ author.name }}{% endblock %}
+
+{% block content %}
+    <h1 class="mb-6 text-2xl">{{ author.name }}</h1>
+
+    {% if author.books.count %}
+        {% for book in author.books.all %}
+            <div class="p-4 grid grid-cols-2 gap-4 bg-slate-100">
+                <h2>
+                    <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a>
+                </h2>
+
+                <p>{{ book.get_status_display }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>This author doesn't have any books yet...</p>
+    {% endif %}
+{% endblock %}
